@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
         --maxWidth: 1000px;
         --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
         box-sizing: border-box;
+        font-size: 10px;
     }
     *, *:before, *:after {
         // when we add padding or border to element it takes away the size instead of growing it - prevent scroll bugs

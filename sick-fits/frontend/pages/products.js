@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Products from "../components/Products";
 
 const ProductsPage = props => (
     <div>
-        <p>Products</p>
+        <Products />
     </div>
 );
 
