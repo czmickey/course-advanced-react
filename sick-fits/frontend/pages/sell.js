@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import CreateProduct from "../components/CreateProduct";
 
-const SellPage = props => (
+const SellPage = () => (
     <div>
-        <p>Sell</p>
+        <CreateProduct />
     </div>
 );
 
