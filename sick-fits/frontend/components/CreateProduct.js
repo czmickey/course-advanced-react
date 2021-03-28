@@ -3,6 +3,7 @@ import Form from '../components/styles/Form';
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import DisplayError from "./ErrorMessage";
+import { ALL_PRODUCTS_QUERY } from "./Products";
 
 const CREATE_DATA_MUTATION = gql`
     mutation CREATE_DATA_MUTATION(
@@ -41,6 +42,7 @@ export default function CreateProduct() {
     });
     const [createProduct, { loading, error, data}] = useMutation(CREATE_DATA_MUTATION, {
         variables: inputs,
+        refetchQueries: [{ query: ALL_PRODUCTS_QUERY }]
     });
 
     return (
@@ -49,7 +51,6 @@ export default function CreateProduct() {
             console.log(inputs);
             // Submit the input fields to the backend
             await createProduct();
-            console.log(res);
             clearForm();
         }}>
             <DisplayError error={error} />
