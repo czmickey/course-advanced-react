@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 
 
-const CURRENT_USER_QUERY = gql`
+export const CURRENT_USER_QUERY = gql`
     query {
         authenticatedItem {
             ... on User {

@@ -1,6 +1,8 @@
+import SignIn from "../components/SignIn";
+
 const SignInPage = () => (
     <div>
-        <p>Sign In</p>
+        <SignIn />
     </div>
 );
 
