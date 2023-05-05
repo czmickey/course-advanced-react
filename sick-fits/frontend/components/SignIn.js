@@ -36,9 +36,7 @@ export default function SignIn() {
 
     async function handleSubmit(e) {
         e.preventDefault(); // stop the form from submitting
-        console.log(inputs);
         const res = await signIn();
-        console.log(res);
         resetForm();
     }
 
@@ -60,7 +58,6 @@ export default function SignIn() {
                         autoComplete='email'
                         value={inputs.email}
                         onChange={handleChange}
-                        // change
                     />
                 </label>
                 <label htmlFor="password">
