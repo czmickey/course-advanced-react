@@ -12,10 +12,10 @@ export const User = list({
             ref: 'CartItem.user',
             many: true,
             ui: {
-                createView: { fieldMode: 'hidden'},
-                itemView: { fieldMode: 'read'},
+                createView: { fieldMode: 'hidden' },
+                itemView: { fieldMode: 'read' },
             }
-        })
-        // TODO, add roles, cart, orders
+        }),
+        orders: relationship({ ref: 'Order.user', many: true }),
     }
 })
