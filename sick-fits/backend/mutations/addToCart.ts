@@ -1,6 +1,6 @@
 import { KeystoneContext } from "@keystone-next/types";
 import { Session } from "../types";
-import { CartItemCreateInput } from "../keystone/schema-types";
+import { CartItemCreateInput } from "../.keystone/schema-types";
 
 export default async function addToCart(
   root: any,
