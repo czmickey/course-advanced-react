@@ -19,3 +19,24 @@ const generatedPermissions = Object.fromEntries(
 export const permissions = {
     ...generatedPermissions
 };
+
+// rule based permissions
+// rules can return a boolean - yes or no - or a filter which limits which products they can CRUD
+export const rules = {
+    canManageProducts({ session }: ListAccessArgs) {
+        // 1. Do they have the permission of canManageProducts
+        if (permissions.canManageProducts({ session })) {
+            return true;
+        }
+        // 2. if not, do they own this item?
+        return { user: { id: session.itemId } }
+    },
+    canReadProducts({ session }: ListAccessArgs) {
+        if (permissions.canManageProducts({ session })) {
+            return true; // can read everything
+        }
+
+        // should see only available products (base od the status field)
+        return { status: 'AVAILABLE' };
+    },
+};
