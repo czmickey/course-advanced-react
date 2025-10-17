@@ -29,7 +29,27 @@ export const rules = {
             return true;
         }
         // 2. if not, do they own this item?
-        return { user: { id: session.itemId } }
+        return { user: { id: session.itemId } };
+    },
+    canOrder({ session }: ListAccessArgs) {
+        if (!isSignedIn({ session })) {
+            return false;
+        }
+
+        // 1. Do they have the permission of canManageProducts
+        if (permissions.canManageCart({ session })) {
+            return true;
+        }
+        // 2. if not, do they own this item?
+        return { user: { id: session.itemId } };
+    },
+    canManageOrderItems({ session }: ListAccessArgs) {
+        // 1. Do they have the permission of canManageProducts
+        if (permissions.canManageCart({ session })) {
+            return true;
+        }
+        // 2. if not, do they own this item?
+        return { order: { user: { id: session.itemId } } };
     },
     canReadProducts({ session }: ListAccessArgs) {
         if (permissions.canManageProducts({ session })) {
