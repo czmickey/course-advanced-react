@@ -7,11 +7,26 @@ const product = fakeItem();
 
 describe('<Product/>', () => {
     it('renders out the price tag and title', () => {
-        const { container, debug } = render(<MockedProvider><Product product={product} /></MockedProvider>);
+        const { container } = render(
+            <MockedProvider>
+                <Product product={product} />
+            </MockedProvider>
+        );
+
         expect(screen.getByText('50 €')).toBeInTheDocument();
 
         const link = container.querySelector('a');
         expect(link).toHaveAttribute('href', '/product/abc123');
         expect(link).toHaveTextContent(product.name);
     });
+
+    it('renders and matches the snapshot', () => {
+        const { container } = render(
+            <MockedProvider>
+                <Product product={product} />
+            </MockedProvider>
+        );
+
+        expect(container).toMatchSnapshot();
+    })
 });
