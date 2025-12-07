@@ -35,8 +35,6 @@ export default function SignUp() {
         e.preventDefault(); // stop the form from submitting
         console.log(inputs);
         const res = await signUp().catch(console.error);
-        console.log(res);
-        console.log({ data, loading, error })
         resetForm();
     }
 
