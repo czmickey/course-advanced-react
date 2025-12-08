@@ -6,8 +6,8 @@ import DisplayError from "./ErrorMessage";
 import { ALL_PRODUCTS_QUERY } from "./Products";
 import Router from 'next/router';
 
-const CREATE_DATA_MUTATION = gql`
-    mutation CREATE_DATA_MUTATION(
+const CREATE_PRODUCT_MUTATION = gql`
+    mutation CREATE_PRODUCT_MUTATION(
         # which variables and types
         $name: String!
         $description: String!
@@ -41,7 +41,7 @@ export default function CreateProduct() {
         price: 0,
         description: '',
     });
-    const [createProduct, { loading, error, data}] = useMutation(CREATE_DATA_MUTATION, {
+    const [createProduct, { loading, error, data}] = useMutation(CREATE_PRODUCT_MUTATION, {
         variables: inputs,
         refetchQueries: [{ query: ALL_PRODUCTS_QUERY }]
     });
@@ -86,4 +86,4 @@ export default function CreateProduct() {
     );
 }
 
-export { CREATE_DATA_MUTATION };
+export { CREATE_PRODUCT_MUTATION };
